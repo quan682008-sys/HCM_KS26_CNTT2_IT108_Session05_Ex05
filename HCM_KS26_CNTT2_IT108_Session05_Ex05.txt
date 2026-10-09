@@ -1,0 +1,16 @@
+﻿Ràng buộc & Trường hợp kiểm thử (Edge Case)
+lỗi "Is a directory" xảy ra khi robot sử dụng lệnh rm xóa đối với thư mục ( lệnh rm được mặc định để xóa file nên xảy ra lỗi”
+ví dụ robot phát hiện thư mục tên thien.tmp nên robot thực hiện xóa thư mục bằng lệnh “rm” kết quả sẽ xảy ra lỗi "Is a directory"
+-> rm thien.tmp
+-> rm: cannot remove 'thien.tmp': Is a directory
+dù là đuôi tmp nhưng nó lại là thư mục nên rb ko thể xóa bằng “rm”
+
+
+Yêu cầu đầu ra
+sơ đồ:
+1. input (file thô) -> 2. Process: kiểm tra xem là file hay thư mục (nếu là thư mục thì bỏ qua) -> nếu là file -> phân loại theo đuôi -> 3. output: đuôi .png/ .jpg/ -> (mv media/), đuôi .py -> (mv scripts/), đuôi .tmp -> (rm)
+danh sách câu lệnh kịch bản cho Robot:
+ mkdir -p media scripts
+mv *.png *.jpg media/
+mv *.py scripts/
+rm *.tmp
